@@ -1,5 +1,6 @@
 import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
+import * as Yup from "yup";
 
 function Register() {
   let navigate = useNavigate();
@@ -10,22 +11,12 @@ function Register() {
       password: "",
     },
     onSubmit: handlesubmit,
-    validate: validate,
+    validationSchema: Yup.object({
+      username: Yup.string().required("Name is required"),
+      email: Yup.string().required("Email is required"),
+      password: Yup.string().required("Password is required"),
+    }),
   });
-
-  function validate(values) {
-    const errors = {};
-    if (!values.username) {
-      errors.username = "Name is required";
-    }
-    if (!values.email) {
-      errors.email = "Email is required";
-    }
-    if (!values.password) {
-      errors.password = "Password is required";
-    }
-    return errors;
-  }
 
   function handlesubmit(values) {
     console.log(values);
