@@ -56,7 +56,6 @@ const ProductDetails = () => {
     imageCover,
     ratingsAverage,
     ratingsQuantity,
-    sold,
     brand,
     category,
   } = product;
