@@ -1,10 +1,8 @@
-import { Link } from "react-router-dom";
+import SomeOfProducts from "../components/common/SomeOfProducts";
 const Home = () => {
   return (
     <div>
-      <h1>Home</h1>
-      <Link to="/register">Register</Link>
-      hiiiiiiiiiiiiiiiii
+      <SomeOfProducts />
     </div>
   );
 };

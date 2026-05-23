@@ -2,9 +2,11 @@ import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Loader2 } from "lucide-react";
+import { UserContext } from "../context/UserContext";
 function Register() {
+  let { token, setToken } = useContext(UserContext);
   let navigate = useNavigate();
   let [error, setError] = useState("");
   let [loading, setLoading] = useState(false);
@@ -37,7 +39,10 @@ function Register() {
         "https://ecommerce.routemisr.com/api/v1/auth/signup",
         values,
       );
-      console.log(data);
+      setToken(data.token);
+      localStorage.setItem("token", data.token);
+      console.log(token);
+      console.log(data.token);
       navigate("/login");
       setLoading(false);
     } catch (error) {
